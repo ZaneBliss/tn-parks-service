@@ -1,6 +1,6 @@
 package com.example.tnparksservice.controllers;
 
-import com.example.tnparksservice.assembler.ParkModelAssembler;
+import com.example.tnparksservice.assemblers.ParkModelAssembler;
 import com.example.tnparksservice.entities.Park;
 import com.example.tnparksservice.exceptions.ParkNotFoundException;
 import com.example.tnparksservice.repositories.ParkRepository;
@@ -43,6 +43,6 @@ public class ParkController {
         Park park = repository.findById(id).orElseThrow(() -> new ParkNotFoundException(id));
 
         return assembler.toModel(park);
-    };
+    }
 }
 
