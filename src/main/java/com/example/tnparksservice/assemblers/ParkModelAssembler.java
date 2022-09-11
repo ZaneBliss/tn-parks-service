@@ -1,4 +1,4 @@
-package com.example.tnparksservice.assembler;
+package com.example.tnparksservice.assemblers;
 
 import com.example.tnparksservice.controllers.ParkController;
 import com.example.tnparksservice.entities.Park;

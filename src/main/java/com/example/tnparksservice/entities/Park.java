@@ -1,39 +1,46 @@
 package com.example.tnparksservice.entities;
 
 import javax.persistence.*;
+import java.util.LinkedHashSet;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 @Table(name = "park")
 public class Park {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id", nullable = false)
+    @Column(nullable = false)
     private Long id;
 
-    @Column(name = "name", nullable = false, unique = true)
+    @Column(nullable = false, unique = true)
     private String name;
+
+    @Column(nullable = false, unique = true)
+    private String phoneNumber;
+
+    @OneToMany(mappedBy = "park", orphanRemoval = true)
+    private final Set<RangerStation> rangerStations = new LinkedHashSet<>();
 
     protected Park() {}
 
     public Park(String name) {
         this.name = name;
     }
+    public Long getId() {
+        return id;
+    }
 
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public String getPhoneNumber() {
+        return phoneNumber;
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
+    public Set<RangerStation> getRangerStations() {
+        return rangerStations;
     }
 
     @Override
