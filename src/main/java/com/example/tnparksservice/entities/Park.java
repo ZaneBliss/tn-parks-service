@@ -1,9 +1,7 @@
 package com.example.tnparksservice.entities;
 
 import javax.persistence.*;
-import java.util.LinkedHashSet;
 import java.util.Objects;
-import java.util.Set;
 
 @Entity
 @Table(name = "park")
@@ -16,11 +14,11 @@ public class Park {
     @Column(nullable = false, unique = true)
     private String name;
 
-    @Column(nullable = false, unique = true)
-    private String phoneNumber;
+    @Column(unique = true)
+    private String latitude;
 
-    @OneToMany(mappedBy = "park", orphanRemoval = true)
-    private final Set<RangerStation> rangerStations = new LinkedHashSet<>();
+    @Column(unique = true)
+    private String longitude;
 
     protected Park() {}
 
@@ -35,12 +33,12 @@ public class Park {
         return name;
     }
 
-    public String getPhoneNumber() {
-        return phoneNumber;
+    public String getLatitude() {
+        return this.latitude;
     }
 
-    public Set<RangerStation> getRangerStations() {
-        return rangerStations;
+    public String getLongitude() {
+        return this.longitude;
     }
 
     @Override
