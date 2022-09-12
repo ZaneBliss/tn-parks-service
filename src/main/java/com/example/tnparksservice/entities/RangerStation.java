@@ -16,13 +16,15 @@ public class RangerStation {
     @Column(nullable = false, unique = true)
     private String name;
 
+    @Column(nullable = false, unique = true)
+    private String phoneNumber;
+
+    @Column(nullable = false)
+    private String address;
+
     @ManyToOne
     @JoinColumn(name = "park_id")
     private Park park;
-
-    @Column(name = "phone_number", nullable = false, unique = true)
-    private String phoneNumber;
-
 
     public RangerStation() {
     }
@@ -38,6 +40,10 @@ public class RangerStation {
 
     public String getPhoneNumber() {
         return phoneNumber;
+    }
+
+    public String getAddress() {
+        return address;
     }
 
     @Override
